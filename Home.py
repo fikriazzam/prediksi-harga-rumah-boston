@@ -255,20 +255,47 @@ with col_chart:
         x="rm", 
         y="medv", 
         color="lstat",
-        labels={"rm": "Rata-rata Jumlah Kamar (RM)", "medv": "Harga Rumah (MEDV)", "lstat": "% Ekonomi Rendah"},
+        labels={"rm": "Jumlah Kamar (RM)", "medv": "MEDV", "lstat": "Ekonomi Rendah (%)"},
         color_continuous_scale=px.colors.sequential.Viridis
     )
+    
+    # PERBAIKAN TOTAL LAYOUT AGAR RAPI & TIDAK BERTABRAKAN
     fig.update_layout(
-        margin=dict(l=10, r=10, t=10, b=10), 
+        # 1. Menyesuaikan margin agar teks memiliki ruang
+        margin=dict(l=5, r=5, t=10, b=45),  # Margin bawah (b=45) agar label sumbu X tidak terpotong
         height=320,
         paper_bgcolor='rgba(0,0,0,0)',
         plot_bgcolor='rgba(0,0,0,0)',
-        font=dict(
-            color='#1e293b',  # Menetapkan warna teks navy gelap
-            size=11
+        font=dict(color='#1e293b', size=11), # Warna teks gelap
+        
+        # 2. Merapikan Sumbu Y (MEDV)
+        yaxis=dict(
+            tickmode='linear',
+            dtick=10,
+            showticklabels=True,
+            title_text=None # Sembunyikan label sumbu Y agar hemat ruang
+        ),
+        
+        # 3. Merapikan Sumbu X (Jumlah Kamar)
+        xaxis=dict(
+            tickangle=0, # Atur kemiringan 0 agar teks mendatar (jika masih nabrak ganti -30)
+            showticklabels=True,
+            title_text="Rata-rata Jumlah Kamar (RM)",
+            title_standoff=10 # Memberi jarak antara judul dan angka sumbu
+        ),
+        
+        # 4. Memindahkan Legenda Warna ke Area Kiri Atas (Mengganti Label Sumbu Y)
+        coloraxis_colorbar=dict(
+            title="% Ekonomi Rendah",
+            titlefont=dict(color='#1e293b', size=11),
+            tickfont=dict(color='#1e293b', size=10),
+            thicknessmode="pixels", thickness=15,
+            lenmode="pixels", len=150, # Membuat legenda lebih pendek
+            yanchor="top", y=1, # Memposisikan legenda di atas
+            xanchor="left", x=0 # Memposisikan legenda di area sumbu Y yang kosong
         )
     )
-    # PERBAIKAN UTAMA: Tambahkan theme=None di bawah ini
+    # Jangan lupa gunakan theme=None untuk memastikan warna teks gelap yang kita setel aktif
     st.plotly_chart(fig, use_container_width=True, theme=None)
 
 with col_insight:
