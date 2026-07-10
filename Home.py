@@ -258,11 +258,15 @@ with col_chart:
         labels={"rm": "Rata-rata Jumlah Kamar (RM)", "medv": "Harga Rumah (MEDV)", "lstat": "% Ekonomi Rendah"},
         color_continuous_scale=px.colors.sequential.Viridis
     )
-    fig.update_layout(
+   fig.update_layout(
         margin=dict(l=10, r=10, t=10, b=10), 
         height=320,
         paper_bgcolor='rgba(0,0,0,0)',
-        plot_bgcolor='rgba(0,0,0,0)'
+        plot_bgcolor='rgba(0,0,0,0)',
+        font=dict(
+            color='#1e293b',
+            size=11
+        )
     )
     st.plotly_chart(fig, use_container_width=True)
 
