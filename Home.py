@@ -264,11 +264,12 @@ with col_chart:
         paper_bgcolor='rgba(0,0,0,0)',
         plot_bgcolor='rgba(0,0,0,0)',
         font=dict(
-            color='#1e293b',
+            color='#1e293b',  # Menetapkan warna teks navy gelap
             size=11
         )
     )
-    st.plotly_chart(fig, use_container_width=True)
+    # PERBAIKAN UTAMA: Tambahkan theme=None di bawah ini
+    st.plotly_chart(fig, use_container_width=True, theme=None)
 
 with col_insight:
     st.markdown("""
