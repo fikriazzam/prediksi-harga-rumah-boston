@@ -273,7 +273,7 @@ with col_chart:
     )
     
     # Menggunakan theme=None agar warna font gelap kita aktif
-    st.plotly_chart(fig, use_container_width=True, theme=None)
+    st.plotly_chart(fig, width="stretch", theme=None)
 
 with col_insight:
     st.markdown("""
@@ -291,7 +291,7 @@ with col_insight:
 
 # 8. SIDEBAR DEKORASI BAWAH (MENAMPILKAN LOGO DAN TEKS STRUKTUR)
 st.sidebar.markdown("<br><br><br><br><br><br><br>", unsafe_allow_html=True)
-st.sidebar.image("logo_sidebar.png", use_container_width=True)
+st.sidebar.image("logo_sidebar.png", width="stretch")
 st.sidebar.markdown(f"""
 <div style="color: #64748b; font-size: 13px; padding: 10px 5px; line-height: 1.6;">
     <b>Tentang Aplikasi:</b><br>
