@@ -84,24 +84,8 @@ st.markdown(f"""
 # 3. LOAD DATASET & AI MODEL
 @st.cache_resource
 def load_model():
-    # 1. Buat jembatan manipulasi objek sebelum pickle membaca model
-    import sys
-    import types
-    import numpy as np
-
-    # Membuat modul bayangan 'numpy._core' dan 'numpy._core.numeric'
-    core = types.ModuleType('numpy._core')
-    sys.modules['numpy._core'] = core
-    sys.modules['numpy._core.numeric'] = core
-    
-    # Memetakan fungsi yang dicari oleh model lama ke fungsi Numpy 1.x yang setara
-    core.numeric = np
-    core.dtype = np.dtype
-
-    # 2. Baru lakukan load model dengan aman
     with open('model_regresi_boston.pkl', 'rb') as file:                
         return pickle.load(file)
-
 @st.cache_data
 def load_data():
     return pd.read_csv('BostonHousing (1).csv')
