@@ -7,9 +7,6 @@ import base64
 import sys
 import numpy
 
-# Trik jembatan untuk mengatasi perbedaan struktur versi Numpy 1.x dan 2.x
-sys.modules['numpy._core'] = numpy
-
 # 1. KONFIGURASI HALAMAN (Wide Mode)
 st.set_page_config(page_title="Smart House Predictor", layout="wide", initial_sidebar_state="expanded")
 
@@ -87,7 +84,10 @@ st.markdown(f"""
 # 3. LOAD DATASET & AI MODEL
 @st.cache_resource
 def load_model():
-    with open('model_regresi_boston.pkl', 'rb') as file:
+    import sys
+    import numpy
+    sys.modules['numpy._core'] = numpy
+    with open('model_regresi_boston.pkl', 'rb') as file:                
         return pickle.load(file)
 
 @st.cache_data
