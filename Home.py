@@ -297,6 +297,6 @@ st.sidebar.markdown(f"""
 <div style="color: #64748b; font-size: 13px; padding: 10px 5px; line-height: 1.6;">
     <b>Tentang Aplikasi:</b><br>
     Aplikasi ini dibangun untuk memprediksi harga rumah di wilayah Boston menggunakan model regresi linear.<br><br>
-    <span style="font-size: 11px; opacity: 0.7;">Dibuat dengan ❤️ menggunakan Streamlit</span>
+    <span style="font-size: 11px; opacity: 0.7;">Dibuat dengan menggunakan Streamlit</span>
 </div>
 """, unsafe_allow_html=True)
